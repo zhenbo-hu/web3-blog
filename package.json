@@ -1,0 +1,67 @@
+{
+  "name": "web3-blog",
+  "homepage": ".",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "^5.0.2",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-react": "^1.0.6",
+    "antd": "^5.18.3",
+    "arkb": "^1.1.61",
+    "arweave": "^1.15.1",
+    "arweave-deploy": "^1.9.1",
+    "axios": "^1.7.2",
+    "depcheck": "^1.4.7",
+    "eslint-config-react-app": "^7.0.1",
+    "ethers": "^6.13.1",
+    "hardhat": "^2.22.5",
+    "hox": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-notifications-component": "^4.0.1",
+    "react-router": "^6.24.0",
+    "react-router-dom": "^6.24.0",
+    "react-scripts": "5.0.1",
+    "source-map-explorer": "^2.5.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "pre-deploy": "npm run build",
+    "deploy": "npm run build && npm run deploy:arkb",
+    "deploy-test": "npm run build && npm run deploy:arkb-test",
+    "deploy:gh": "gh-pages -d build",
+    "deploy:arkb": "arkb deploy build -w secrets/wallet.json --timeout=50000 --debug",
+    "deploy:arkb-test": "arkb deploy build -w secrets/wallet.json --timeout=50000 --debug --gateway http://127.0.0.1:1984"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}

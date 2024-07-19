@@ -1,0 +1,109 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  height: 100vh;
+  background-color: moccasin;
+  background-repeat: no-repeat;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+div {
+  color: black;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', SimHei, "微软雅黑", sans-serif; */
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.header-class {
+  background-color: burlywood;
+  display: "flex";
+  align-items: "center";
+}
+
+.glass-container {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  backdrop-filter: blur(3px);
+  /* background-color:darkkhaki; */
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+  border: 2px rgba(255, 255, 255, 0.4) solid;
+  border-bottom: 2px rgba(40, 40, 40, 0.35) solid;
+  border-right: 2px rgba(40, 40, 40, 0.35) solid;
+  margin-bottom: 4px;
+}
+
+.button-class {
+  display: flex-end;
+  margin: 10px;
+  background-color: bisque;
+  border-color: olive;
+}
+
+.primary-button-class {
+  display: flex-end;
+  margin: 10px;
+  background-color: orange;
+  border-color: olive;
+}
+
+.input-class {
+  &::placeholder {
+    color: gray !important;
+  }
+  &:focus,
+  &:hover {
+    background-color: mintcream !important;
+  }
+  width: 99.7%;
+  min-width: 100px;
+  border-style: none;
+  outline-style: none;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: moccasin;
+  line-height: 1.6;
+}
+
+.toolbar-class {
+  /* --w-e-toolbar-border-color: olive; */
+  --w-e-toolbar-bg-color: moccasin;
+  border-bottom: 1px solid #ccc;
+  --w-e-toolbar-active-color: black;
+}
+
+.editor-class {
+  &:focus,
+  &:hover {
+    /* border-color: mintcream !important; */
+    --w-e-textarea-bg-color: mintcream;
+  }
+  --w-e-textarea-slight-color: gray;
+  --w-e-textarea-bg-color: moccasin;
+  height: 75vh;
+  overflow: hidden;
+}
