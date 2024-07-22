@@ -44,3 +44,4 @@ ignition/deployments/chain-31337
 log
 .vscode
 /ignition/deployments
+.trunk
