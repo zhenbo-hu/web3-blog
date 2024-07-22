@@ -12,6 +12,7 @@ import {
 import { Button, Skeleton } from "antd";
 import axios from "axios";
 const BlogEditor = lazy(() => import("./BlogEditor"));
+const BlogLoading = lazy(() => import("./BlogLoading"));
 
 export default function BlogEdit() {
   const {
@@ -200,7 +201,7 @@ export default function BlogEdit() {
           {contentLoading ? (
             <Skeleton />
           ) : (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<BlogLoading />}>
               <BlogEditor />
             </Suspense>
           )}

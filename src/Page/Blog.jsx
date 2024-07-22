@@ -4,18 +4,19 @@ const BlogLayout = lazy(() => import("../Components/BlogLayout"));
 const BlogHeader = lazy(() => import("../Components/BlogHeader"));
 const BlogFooter = lazy(() => import("../Components/BlogFooter"));
 const BlogItem = lazy(() => import("../Components/BlogItem"));
+const BlogLoading = lazy(() => import("./BlogLoading"));
 
 export default function Blog() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<BlogLoading />}>
       <BlogLayout>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogHeader />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogItem />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogFooter />
         </Suspense>
       </BlogLayout>

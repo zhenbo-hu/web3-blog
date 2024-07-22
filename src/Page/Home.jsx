@@ -6,6 +6,7 @@ const BlogLayout = lazy(() => import("../Components/BlogLayout"));
 const BlogHeader = lazy(() => import("../Components/BlogHeader"));
 const BlogContent = lazy(() => import("../Components/BlogContent"));
 const BlogFooter = lazy(() => import("../Components/BlogFooter"));
+const BlogLoading = lazy(() => import("./BlogLoading"));
 
 export default function Home() {
   const { ethersProvider, setEthersProvider } = useWallet();
@@ -17,15 +18,15 @@ export default function Home() {
   }, [ethersProvider, setEthersProvider]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<BlogLoading />}>
       <BlogLayout>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogHeader />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogContent />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<BlogLoading />}>
           <BlogFooter />
         </Suspense>
       </BlogLayout>
