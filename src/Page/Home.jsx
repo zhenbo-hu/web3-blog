@@ -6,7 +6,7 @@ const BlogLayout = lazy(() => import("../Components/BlogLayout"));
 const BlogHeader = lazy(() => import("../Components/BlogHeader"));
 const BlogContent = lazy(() => import("../Components/BlogContent"));
 const BlogFooter = lazy(() => import("../Components/BlogFooter"));
-const BlogLoading = lazy(() => import("./BlogLoading"));
+const BlogLoading = lazy(() => import("../Components/BlogLoading"));
 
 export default function Home() {
   const { ethersProvider, setEthersProvider } = useWallet();

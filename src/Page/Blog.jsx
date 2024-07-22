@@ -4,7 +4,7 @@ const BlogLayout = lazy(() => import("../Components/BlogLayout"));
 const BlogHeader = lazy(() => import("../Components/BlogHeader"));
 const BlogFooter = lazy(() => import("../Components/BlogFooter"));
 const BlogItem = lazy(() => import("../Components/BlogItem"));
-const BlogLoading = lazy(() => import("./BlogLoading"));
+const BlogLoading = lazy(() => import("../Components/BlogLoading"));
 
 export default function Blog() {
   return (
