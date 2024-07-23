@@ -42,7 +42,7 @@ export default function BlogList() {
   }, []);
 
   return (
-    <div style={{ margin: "auto", padding: "10px", width: "85%" }}>
+    <div className="blog-list">
       {loading ? (
         <h2>Loading...</h2>
       ) : items.length > 0 ? (

@@ -13,6 +13,8 @@ body {
   height: 100vh;
   background-color: moccasin;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
@@ -106,4 +108,38 @@ a {
   --w-e-textarea-bg-color: moccasin;
   height: 75vh;
   overflow: hidden;
+}
+
+.blog-list {
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.li-item {
+  display: flex;
+}
+
+.mail {
+  color: grey ;
+}
+
+.github {
+  color: grey;
+}
+
+.heart{
+  color: OrangeRed;
 }
