@@ -9,13 +9,15 @@ import {
   safeMint,
   updateNFT,
 } from "../service/web3BlogService";
-import { Button, Skeleton } from "antd";
+import { Button, message, Skeleton } from "antd";
 import axios from "axios";
 import { arweaveGateway } from "../config";
 const BlogEditor = lazy(() => import("./BlogEditor"));
 const BlogLoading = lazy(() => import("./BlogLoading"));
 
 export default function BlogEdit() {
+  const [messageApi, contextHolder] = message.useMessage();
+
   const {
     blogEditorTitle,
     setBlogEditorTitle,
@@ -101,12 +103,12 @@ export default function BlogEdit() {
     };
     const { success, data } = await storeArweave(blogEditorValue, tags);
     if (!success) {
-      alert("Upload blog to Arweave failed, please check network and retry!");
+      messageApi.error("Upload blog to Arweave failed, please check network and retry!");
       setUploadLoading(false);
       return;
     }
 
-    alert(data);
+    messageApi.success(data);
     setBlogUrl(data);
     setUploadLoading(false);
   };
@@ -138,7 +140,11 @@ export default function BlogEdit() {
       updateTimestamp.toString(),
       blogUrl
     );
-    alert(rst.success);
+    if (rst.success) {
+      messageApi.success("发布成功");
+    } else {
+      messageApi.error("发布失败");
+    }
     setMintLoading(false);
 
     if (rst.success) {
@@ -177,11 +183,18 @@ export default function BlogEdit() {
       updateTimestamp.toString(),
       blogUrl
     );
-    alert(rst.success);
+    if (rst.success) {
+      messageApi.success("更新并发布成功");
+    } else {
+      messageApi.error("更新并发布失败");
+    }
     setMintLoading(false);
 
     if (rst.success) {
-      window.location.assign(window.location.pathname.replace("#edit", ""));
+      const { success, data } = await getWeb3BlogTokenId();
+      if (success) {
+        window.location.assign(`#${data}`);
+      }
     }
   };
 
@@ -214,6 +227,7 @@ export default function BlogEdit() {
               justifyContent: "space-evenly",
             }}
           >
+            {contextHolder}
             <Button
               className="button-class"
               onClick={uploadBlogToArweave}
