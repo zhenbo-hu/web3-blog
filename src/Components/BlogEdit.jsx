@@ -11,6 +11,7 @@ import {
 } from "../service/web3BlogService";
 import { Button, Skeleton } from "antd";
 import axios from "axios";
+import { arweaveGateway } from "../config";
 const BlogEditor = lazy(() => import("./BlogEditor"));
 const BlogLoading = lazy(() => import("./BlogLoading"));
 
@@ -76,7 +77,7 @@ export default function BlogEdit() {
       return;
     }
 
-    const url = "http://127.0.0.1:1984/" + data;
+    const url = arweaveGateway + data;
     axios
       .get(url)
       .then((data) => {
@@ -230,8 +231,10 @@ export default function BlogEdit() {
           </div>
         </div>
         <div style={{ flex: 1, padding: "2px" }}>
-          <h1>{blogEditorTitle}</h1>
-          <div dangerouslySetInnerHTML={{ __html: blogEditorValue }}></div>
+          <h1 className="blog-title">{blogEditorTitle}</h1>
+          <div className="blog-item">
+            <div dangerouslySetInnerHTML={{ __html: blogEditorValue }}></div>
+          </div>
         </div>
       </div>
     </div>

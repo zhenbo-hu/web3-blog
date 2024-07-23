@@ -3,6 +3,7 @@ import { getDetailByTokenId, getTokenUri } from "../service/web3BlogService";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { arweaveGateway } from "../config";
 
 export default function BlogItem() {
   const location = useLocation();
@@ -32,7 +33,8 @@ export default function BlogItem() {
       return;
     }
 
-    const url = "http://127.0.0.1:1984/" + data;
+    const url = arweaveGateway + data;
+    console.log(url);
     axios
       .get(url)
       .then((data) => {
@@ -46,19 +48,21 @@ export default function BlogItem() {
   useEffect(() => {
     getBlogTitle();
     getBlogContent();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div>
       {title && content ? (
         <div>
-          <h1>{title}</h1>
-          <h2>
+          <h1 className="blog-title">{title}</h1>
+          <h3 className="blog-time">
             {"lastUpdateTime: " +
               new Date(Number(updateTimestamp)).toLocaleString()}
-          </h2>
-          <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          </h3>
+          <div className="blog-item">
+            <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          </div>
         </div>
       ) : (
         <Skeleton />

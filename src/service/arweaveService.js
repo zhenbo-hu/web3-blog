@@ -1,4 +1,5 @@
 import Arweave from "arweave";
+import { arweaveGateway } from "../config";
 
 const arweave = Arweave.init({
   host: "127.0.0.1",
@@ -50,7 +51,7 @@ export const toArweave = async function (entity) {
   await arweave.transactions.sign(tx); //
   const response = await arweave.transactions.post(tx);
 
-  const myurl = "http://127.0.0.1:1984/" + tx.id;
+  const myurl = arweaveGateway + tx.id;
 
   return { success: response.status === 200, data: myurl };
 };

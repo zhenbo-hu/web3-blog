@@ -1,34 +1,7 @@
 const config = [
-  // {
-  //   chainId: 0x7A69,
-  //   web3BlogAddress: "0xE3826fFd05dFb053782A7968F9a70571e9Cab54C",
-  //   params: [
-  //     {
-  //       chainId: "0x7A69",
-  //       rpcUrls: ["http://127.0.0.1:8545/"],
-  //       chainName: "localhost-hardhat",
-  //       nativeCurrency: {
-  //         name: "LETH",
-  //         symbol: "LETH",
-  //         decimals: 18,
-  //       },
-  //       blockExplorerUrls: ["https://polygonscan.com/"],
-  //     },
-  //   ],
-  // },
-  // {
-  //   chainId: "137",
-  //   rpcUrls: ["https://polygon-mainnet.infura.io"],
-  //   chainName: "Polygon Mainnet",
-  //   nativeCurrency: {
-  //     name: "MATIC",
-  //     symbol: "MATIC",
-  //     decimals: 18,
-  //   },
-  //   blockExplorerUrls: ["https://polygonscan.com/"],
-  // },
   {
-    chainId: 0x7A69,
+    // polygon testnet
+    chainId: 0x7a69,
     web3BlogAddress: "0x53661D1e8717813136B88E2AAB0732c7eA1663e3",
     rpcUrls: ["https://rpc-amoy.polygon.technology"],
     chainName: "Amoy",
@@ -37,8 +10,26 @@ const config = [
       symbol: "MATIC",
       decimals: 18,
     },
-    blockExplorerUrls: ["https://www.oklink.com/amoy"],
-  }
+    blockExplorerUrls: ["https://amoy.polygonscan.com/"],
+    arweaveGateway: ["http://127.0.0.1:1984/"],
+  },
+  {
+    // polygon mainnet
+    chainId: 0x89,
+    web3BlogAddress: "",
+    rpcUrls: [
+      "https://polygon-rpc.com",
+      "https://api.zan.top/node/v1/polygon/mainnet/public",
+      "https://polygon.drpc.org",
+    ],
+    nativeCurrency: {
+      name: "MATIC",
+      symbol: "MATIC",
+      decimals: 18,
+    },
+    blockExplorerUrls: ["https://polygonscan.com/"],
+    arweaveGateway: ["https://arweave.net/"],
+  },
 ];
 
 const selection = 0;
@@ -48,3 +39,4 @@ export const rpcUrl = () => {
   return config[selection].params[0].rpcUrls[0];
 };
 export const contractAddress = config[selection].web3BlogAddress;
+export const arweaveGateway = config[selection].arweaveGateway;

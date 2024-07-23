@@ -10,12 +10,14 @@ export default function Blog() {
   return (
     <Suspense fallback={<BlogLoading />}>
       <BlogLayout>
-        <Suspense fallback={<BlogLoading />}>
-          <BlogHeader />
-        </Suspense>
-        <Suspense fallback={<BlogLoading />}>
-          <BlogItem />
-        </Suspense>
+        <div className="main">
+          <Suspense fallback={<BlogLoading />}>
+            <BlogHeader />
+          </Suspense>
+          <Suspense fallback={<BlogLoading />}>
+            <BlogItem />
+          </Suspense>
+        </div>
         <Suspense fallback={<BlogLoading />}>
           <BlogFooter />
         </Suspense>

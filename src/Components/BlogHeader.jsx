@@ -54,7 +54,6 @@ export default function BlogHeader() {
   const isOwner = async () => {
     const { success, data } = await getWeb3BlogOwner();
     if (success) {
-      console.log(data);
       setOwnerAddress(data);
     }
   };
