@@ -42,43 +42,44 @@ a {
   text-decoration: none;
 }
 
-.header-class {
+.header {
+  display: flex;
+  align-items: center;
   background-color: burlywood;
-  display: "flex";
-  align-items: "center";
+  min-height: 80px;
+}
+
+.a-header {
+  color: #fff;
+  flex: 1;
+  min-width: 0;
 }
 
 .glass-container {
-  color: white;
   display: flex;
   align-items: center;
-  gap: 20px;
-  border-radius: 10px;
-  background-color: blanchedalmond;
-  backdrop-filter: blur(3px);
-  /* background-color:darkkhaki; */
-  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
-  border: 2px rgba(255, 255, 255, 0.4) solid;
-  border-bottom: 2px rgba(40, 40, 40, 0.35) solid;
-  border-right: 2px rgba(40, 40, 40, 0.35) solid;
-  margin-bottom: 4px;
+  border-radius: 12px;
+  background-color: beige;
+  border: 1px lightgrey solid;
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
-.button-class {
+.button {
   display: flex-end;
-  margin: 10px;
+  margin: 12px;
   background-color: bisque;
   border-color: olive;
 }
 
-.primary-button-class {
+.primary-button {
   display: flex-end;
-  margin: 10px;
+  margin: 12px;
   background-color: orange;
   border-color: olive;
 }
 
-.input-class {
+.input {
   &::placeholder {
     color: gray !important;
   }
@@ -96,17 +97,16 @@ a {
   line-height: 1.6;
 }
 
-.toolbar-class {
+.toolbar {
   /* --w-e-toolbar-border-color: olive; */
   --w-e-toolbar-bg-color: moccasin;
   border-bottom: 1px solid #ccc;
   --w-e-toolbar-active-color: black;
 }
 
-.editor-class {
+.editor {
   &:focus,
   &:hover {
-    /* border-color: mintcream !important; */
     --w-e-textarea-bg-color: mintcream;
   }
   --w-e-textarea-slight-color: gray;
@@ -123,27 +123,32 @@ a {
 
 .blog-list {
   margin: auto;
-  padding: 20px;
-  width: 80%;
+  padding: 22px;
+  width: 60%;
 }
 
 .blog-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  padding-top: 22px;
+  min-height: 10%;
 }
 
 .blog-time {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
 .blog-item {
+  background-color: beige;
   margin-left: 20%;
+  margin-bottom: 40px;
+  padding-top: 22px;
+  padding-bottom: 22px;
   border-style: solid;
   border-color: grey;
   border-radius: 12px;
@@ -152,9 +157,30 @@ a {
   width: 60%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 20%;
+  /* align-items: center; */
+  /* justify-content: center; */
+  min-height: 80%;
+}
+
+.blog-edit {
+  display: flex;
+  flex-direction: row;
+}
+
+.blog-edit-item {
+  flex: 1;
+  padding: 2px;
+}
+
+.blog-edit-button {
+  display: flex;
+  margin: 1px;
+  justify-content: space-evenly;
+}
+
+.blog-editor {
+  border: 1px solid #ccc;
+  z-index: 100;
 }
 
 .footer {
@@ -165,7 +191,7 @@ a {
 }
 
 .footer-item {
-  padding: 16px;
+  padding: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,13 +202,13 @@ a {
 }
 
 .mail {
-  color: grey ;
+  color: grey;
 }
 
 .github {
   color: grey;
 }
 
-.heart{
+.heart {
   color: OrangeRed;
 }

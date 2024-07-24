@@ -1,4 +1,4 @@
-import { Card } from "antd";
+import { Card, message } from "antd";
 import { useEffect, useRef, useState } from "react";
 import {
   getDetailByTokenId,
@@ -6,7 +6,8 @@ import {
 } from "../service/web3BlogService";
 
 export default function BlogList() {
-  // const location = useLocation();
+  const [messageApi, contextHolder] = message.useMessage();
+
   const homepageUrl = useRef("");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,7 @@ export default function BlogList() {
       }
       setItems(blogs);
     } else {
-      alert("Get tokenId failed!");
+      messageApi.error("无法获取Blog信息!");
     }
 
     setLoading(false);
@@ -43,6 +44,7 @@ export default function BlogList() {
 
   return (
     <div className="blog-list">
+      {contextHolder}
       {loading ? (
         <h2>Loading...</h2>
       ) : items.length > 0 ? (

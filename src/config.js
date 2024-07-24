@@ -40,3 +40,5 @@ export const rpcUrl = () => {
 };
 export const contractAddress = config[selection].web3BlogAddress;
 export const arweaveGateway = config[selection].arweaveGateway;
+
+export const MAX_TITLE_LENGTH = 100;

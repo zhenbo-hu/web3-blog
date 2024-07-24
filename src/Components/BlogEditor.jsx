@@ -3,8 +3,10 @@ import "@wangeditor/editor/dist/css/style.css";
 import { Editor, Toolbar } from "@wangeditor/editor-for-react";
 import { useBlogEditorStore } from "../store/BlogStore";
 import { imageToArweave } from "../service/arweaveService";
+import { message } from "antd";
 
 export default function BlogEditor() {
+  const [messageApi, contextHolder] = message.useMessage();
   const { blogEditorValue, setBlogEditorValue } = useBlogEditorStore();
 
   const [editor, setEditor] = useState(null);
@@ -22,7 +24,7 @@ export default function BlogEditor() {
         async customUpload(file, insertFn) {
           const { success, data } = await imageToArweave(file);
           if (!success) {
-            alert("Upload image to Arweave failed!");
+            messageApi.error("图片上传Arweave失败! 请检查网络后重试");
           }
           insertFn(data, "", data);
         },
@@ -40,16 +42,17 @@ export default function BlogEditor() {
   }, [editor]);
 
   return (
-    <>
-      <div style={{ border: "1px solid #ccc", zIndex: 100 }}>
+    <div>
+      {contextHolder}
+      <div className="blog-editor">
         <Toolbar
-          className="toolbar-class"
+          className="toolbar"
           editor={editor}
           defaultConfig={toolbarConfig}
           mode="default"
         />
         <Editor
-          className="editor-class"
+          className="editor"
           defaultConfig={editorConfig}
           value={blogEditorValue}
           onCreated={setEditor}
@@ -57,6 +60,6 @@ export default function BlogEditor() {
           mode="default"
         />
       </div>
-    </>
+    </div>
   );
 }

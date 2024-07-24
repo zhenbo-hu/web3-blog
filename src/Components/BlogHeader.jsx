@@ -36,7 +36,7 @@ export default function BlogHeader() {
       setEditState(true);
       setTokenId(locNum);
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -80,25 +80,13 @@ export default function BlogHeader() {
 
   return (
     <Layout>
-      <Header
-        className="header-class"
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <a
-          style={{ color: "#FFF", flex: 1, minWidth: 0 }}
-          href={homepageUrl.current}
-        >
-          <h1>Web3 Blog</h1>
+      <Header className="header">
+        <a className="a-header" href={homepageUrl.current}>
+          <h1>Kevin's Web3 Blog</h1>
         </a>
 
         {ownerCheck ? (
-          <Button
-            className="button-class"
-            disabled={!ownerCheck}
-          >
+          <Button className="button" disabled={!ownerCheck}>
             <a href={homepageUrl.current + "#edit"}>New</a>
           </Button>
         ) : (
@@ -106,7 +94,7 @@ export default function BlogHeader() {
         )}
 
         {editState && ownerCheck ? (
-          <Button className="button-class">
+          <Button className="button">
             <a
               href={
                 tokenId !== 0
@@ -122,11 +110,11 @@ export default function BlogHeader() {
         )}
 
         <Button
-          className="primary-button-class"
+          className="primary-button"
           onClick={connectWallet}
           loading={loading}
         >
-          {wallet ? walletAddress : <div>Connect Wallet</div>}
+          {wallet ? walletAddress : <div>连接钱包</div>}
         </Button>
       </Header>
     </Layout>

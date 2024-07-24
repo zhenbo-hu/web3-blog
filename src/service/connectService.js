@@ -4,24 +4,26 @@ import { messageBox } from "./messageService";
 
 export const defaultProvider = () => {
   return ethers.getDefaultProvider();
-}
+};
 
 export const browserProvider = () => {
   return new ethers.BrowserProvider(window.ethereum);
-}
+};
 
 export const getSigner = async (provider) => {
   return await provider.getSigner();
-}
+};
 
 export const getAddress = async (signer) => {
   return await signer.getAddress();
-}
+};
 
 export const tryConnectWallet = async () => {
-  let provider = null, signer = null, address = null;
+  let provider = null,
+    signer = null,
+    address = null;
   if (window.ethereum == null) {
-    alert("MetaMask not installed, cannot connect wallet!");
+    alert("未发现MetaMask或其他钱包插件, 请安装钱包插件后再进行连接!");
     provider = ethers.getDefaultProvider();
   } else {
     provider = new ethers.BrowserProvider(window.ethereum);
@@ -30,7 +32,7 @@ export const tryConnectWallet = async () => {
   }
 
   return { provider, signer, address };
-}
+};
 
 export const connectOnce = async (provider) => {
   await provider.send("eth_requestAccounts", []);

@@ -11,7 +11,7 @@ import {
 } from "../service/web3BlogService";
 import { Button, message, Skeleton } from "antd";
 import axios from "axios";
-import { arweaveGateway } from "../config";
+import { arweaveGateway, MAX_TITLE_LENGTH } from "../config";
 const BlogEditor = lazy(() => import("./BlogEditor"));
 const BlogLoading = lazy(() => import("./BlogLoading"));
 
@@ -48,6 +48,14 @@ export default function BlogEdit() {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    if (blogEditorTitle.length >= MAX_TITLE_LENGTH * 0.85) {
+      messageApi.error(
+        `标题最长不可超过${MAX_TITLE_LENGTH}字符, 当前长度为${blogEditorTitle.length}`
+      );
+    }
+  }, [blogEditorTitle, messageApi]);
+
   const getExistBlog = async (id) => {
     setTitleLoading(true);
     setContentLoading(true);
@@ -65,7 +73,7 @@ export default function BlogEdit() {
       id
     );
     if (!success) {
-      alert("Get token title failed!");
+      messageApi.err("无法获取到Blog标题!");
       return;
     }
 
@@ -75,7 +83,7 @@ export default function BlogEdit() {
   const getBlogContent = async (id) => {
     const { success, data } = await getTokenUri(id);
     if (!success) {
-      alert("Get tokenUri failed!");
+      messageApi.error("无法获取Blog内容Id!");
       return;
     }
 
@@ -86,7 +94,7 @@ export default function BlogEdit() {
         setBlogEditorValue(data.data);
       })
       .catch((err) => {
-        alert("Fetch blog content failed!");
+        messageApi.error("无法获取Blog内容!");
       });
   };
 
@@ -103,7 +111,7 @@ export default function BlogEdit() {
     };
     const { success, data } = await storeArweave(blogEditorValue, tags);
     if (!success) {
-      messageApi.error("Upload blog to Arweave failed, please check network and retry!");
+      messageApi.error("Blog上传至Arweave失败, 请检查网络并重试!");
       setUploadLoading(false);
       return;
     }
@@ -118,18 +126,18 @@ export default function BlogEdit() {
 
     setMintLoading(true);
     if (ethersSigner === null) {
-      alert("Connect Wallet first!");
+      messageApi.error("请先连接钱包!");
       setMintLoading(false);
       return;
     }
     if (blogUrl.length === 0) {
-      alert("Upload first!");
+      messageApi.error("请先点击上传按钮将内容上传至Arweave!");
       setMintLoading(false);
       return;
     }
 
     if (blogEditorTitle.length === 0) {
-      alert("Please input blog title!");
+      messageApi.error("请输入Blog标题!");
       setMintLoading(false);
       return;
     }
@@ -160,18 +168,18 @@ export default function BlogEdit() {
 
     setMintLoading(true);
     if (ethersSigner === null) {
-      alert("Connect Wallet first!");
+      messageApi.error("请先连接钱包!");
       setMintLoading(false);
       return;
     }
     if (blogUrl.length === 0) {
-      alert("Upload first!");
+      messageApi.error("请先点击上传按钮将内容上传至Arweave!");
       setMintLoading(false);
       return;
     }
 
     if (blogEditorTitle.length === 0) {
-      alert("Please input blog title!");
+      messageApi.error("请输入Blog标题!");
       setMintLoading(false);
       return;
     }
@@ -200,15 +208,15 @@ export default function BlogEdit() {
 
   return (
     <div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ flex: 1, padding: "10px" }}>
+      <div className="blog-edit">
+        <div className="blog-edit-item-1">
           <input
-            className="input-class"
+            className="input"
             value={blogEditorTitle}
             placeholder="请输入标题...(上限100字符)"
             onChange={handleTitleChange}
             type="text"
-            maxLength={100}
+            maxLength={MAX_TITLE_LENGTH}
             loading={titleLoading}
           />
 
@@ -220,31 +228,25 @@ export default function BlogEdit() {
             </Suspense>
           )}
 
-          <div
-            style={{
-              display: "flex",
-              margin: "1px",
-              justifyContent: "space-evenly",
-            }}
-          >
+          <div className="blog-edit-button">
             {contextHolder}
             <Button
-              className="button-class"
+              className="button"
               onClick={uploadBlogToArweave}
               loading={uploadLoading}
             >
-              Upload to Arweave
+              上传至Arweave
             </Button>
             <Button
-              className="primary-button-class"
+              className="primary-button"
               onClick={!editState ? mintBlog : updateBlog}
               loading={mintLoading}
             >
-              {!editState ? "Mint" : "Update"}
+              {!editState ? "首次发布" : "更新并发布"}
             </Button>
           </div>
         </div>
-        <div style={{ flex: 1, padding: "2px" }}>
+        <div className="blog-edit-item">
           <h1 className="blog-title">{blogEditorTitle}</h1>
           <div className="blog-item">
             <div dangerouslySetInnerHTML={{ __html: blogEditorValue }}></div>

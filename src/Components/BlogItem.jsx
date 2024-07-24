@@ -1,4 +1,4 @@
-import { Skeleton } from "antd";
+import { message, Skeleton } from "antd";
 import { getDetailByTokenId, getTokenUri } from "../service/web3BlogService";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,6 +6,8 @@ import { useLocation } from "react-router";
 import { arweaveGateway } from "../config";
 
 export default function BlogItem() {
+  const [messageApi, contextHolder] = message.useMessage();
+
   const location = useLocation();
   const tokenId = Number(location.pathname.split("/")[1]);
 
@@ -18,7 +20,7 @@ export default function BlogItem() {
       tokenId
     );
     if (!success) {
-      alert("Get token title failed!");
+      messageApi.error("无法获取到Blog标题!");
       return;
     }
 
@@ -29,7 +31,7 @@ export default function BlogItem() {
   const getBlogContent = async () => {
     const { success, data } = await getTokenUri(tokenId);
     if (!success) {
-      alert("Get tokenUri failed!");
+      messageApi.error("无法获取Blog内容Id!");
       return;
     }
 
@@ -41,7 +43,7 @@ export default function BlogItem() {
         setContent(data.data);
       })
       .catch((err) => {
-        alert("Fetch blog content failed!");
+        messageApi.error("无法获取Blog内容!");
       });
   };
 
@@ -53,11 +55,12 @@ export default function BlogItem() {
 
   return (
     <div>
+      {contextHolder}
       {title && content ? (
         <div>
           <h1 className="blog-title">{title}</h1>
           <h3 className="blog-time">
-            {"lastUpdateTime: " +
+            {"最近更新时间: " +
               new Date(Number(updateTimestamp)).toLocaleString()}
           </h3>
           <div className="blog-item">
