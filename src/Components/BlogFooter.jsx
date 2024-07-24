@@ -1,4 +1,4 @@
-import { MailFilled, GithubFilled, HeartFilled } from "@ant-design/icons";
+import { HeartFilled } from "@ant-design/icons";
 import { Popover } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
 
@@ -8,16 +8,7 @@ export default function BlogFooter() {
       <hr color="grey" />
       <div className="footer-item">
         <h3>
-          <MailFilled className="mail" />
-          &nbsp; zhenbohu.hitsz@gmail.com &nbsp;|&nbsp;
-        </h3>
-        <h3>
-          <GithubFilled className="github" />
-          &nbsp;
-          <a href="https://github.com/zhenbo-hu">zhenbo-hu</a>
-          &nbsp;|&nbsp;
-        </h3>
-        <h3>
+          Kevin's Web3 Blog&nbsp;|&nbsp;
           <HeartFilled className="heart" />
           &nbsp;
           <Popover

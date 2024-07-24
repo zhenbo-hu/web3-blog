@@ -52,7 +52,7 @@ export default function BlogList() {
           <a href={homepageUrl.current + "#" + item.id}>
             <Card className="glass-container" key={item.id} bordered={true}>
               <h1>{item.title}</h1>
-              <h3>lastUpdateTime: {item.updateTime}</h3>
+              <h4>最近更新时间: {item.updateTime}</h4>
             </Card>
           </a>
         ))

@@ -55,14 +55,20 @@ a {
   min-width: 0;
 }
 
+.container {
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
 .glass-container {
   display: flex;
   align-items: center;
   border-radius: 12px;
   background-color: beige;
-  border: 1px lightgrey solid;
+  border: 1px lightgrey dashed;
   margin-bottom: 16px;
   margin-top: 16px;
+  min-height: 150px;
 }
 
 .button {
@@ -124,7 +130,7 @@ a {
 .blog-list {
   margin: auto;
   padding: 22px;
-  width: 60%;
+  width: 50%;
 }
 
 .blog-title {
@@ -199,14 +205,6 @@ a {
 
 .li-item {
   display: flex;
-}
-
-.mail {
-  color: grey;
-}
-
-.github {
-  color: grey;
 }
 
 .heart {
