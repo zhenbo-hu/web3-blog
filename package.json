@@ -36,7 +36,6 @@
     "pre-deploy": "npm run build",
     "deploy": "npm run build && npm run deploy:arkb",
     "deploy-test": "npm run build && npm run deploy:arkb-test",
-    "deploy:gh": "gh-pages -d build",
     "deploy:arkb": "arkb deploy build -w secrets/wallet.json --timeout=50000 --debug",
     "deploy:arkb-test": "arkb deploy build -w secrets/wallet.json --timeout=50000 --debug --gateway http://127.0.0.1:1984"
   },

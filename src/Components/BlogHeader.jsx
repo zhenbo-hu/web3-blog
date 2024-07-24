@@ -87,7 +87,7 @@ export default function BlogHeader() {
 
         {ownerCheck ? (
           <Button className="button" disabled={!ownerCheck}>
-            <a href={homepageUrl.current + "#edit"}>New</a>
+            <a href={homepageUrl.current + "#edit"}>新建</a>
           </Button>
         ) : (
           <div></div>
@@ -102,7 +102,7 @@ export default function BlogHeader() {
                   : homepageUrl.current
               }
             >
-              Edit
+              编辑
             </a>
           </Button>
         ) : (
