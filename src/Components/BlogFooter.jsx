@@ -2,14 +2,22 @@ import { HeartFilled } from "@ant-design/icons";
 import { Popover } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
 import { DONATION_BITCOIN_ADDRESS, DONATION_ETHEREUM_ADDRESS } from "../config";
+import { useEffect, useRef } from "react";
 
 export default function BlogFooter() {
+  const homepageUrl = useRef("");
+
+  useEffect(() => {
+    homepageUrl.current = window.location.href.split("#")[0];
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="footer">
       <hr color="grey" />
       <div className="footer-item">
         <h3>
-          Kevin's Web3 Blog&nbsp;|&nbsp;
+          <a href={homepageUrl.current}>Kevin Hu's Web3 Blog</a>&nbsp;|&nbsp;
           <HeartFilled className="heart" />
           &nbsp;
           <Popover

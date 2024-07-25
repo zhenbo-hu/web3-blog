@@ -82,7 +82,7 @@ export default function BlogHeader() {
     <Layout>
       <Header className="header">
         <a className="a-header" href={homepageUrl.current}>
-          <h1>Kevin's Web3 Blog</h1>
+          <h1>Kevin Hu's Web3 Blog</h1>
         </a>
 
         {ownerCheck ? (
