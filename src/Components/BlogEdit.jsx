@@ -33,8 +33,8 @@ export default function BlogEdit() {
 
   const [uploadLoading, setUploadLoading] = useState(false);
   const [mintLoading, setMintLoading] = useState(false);
-  const [titleLoading, setTitleLoading] = useState(false);
-  const [contentLoading, setContentLoading] = useState(false);
+  const [titleLoading, setTitleLoading] = useState(0);
+  const [contentLoading, setContentLoading] = useState(0);
   const [tokenId, setTokenId] = useState(-1);
 
   useEffect(() => {
@@ -44,6 +44,9 @@ export default function BlogEdit() {
       setTokenId(Number(loc));
       setEditState(true);
       return;
+    } else {
+      setBlogEditorTitle("");
+      setBlogEditorValue("");
     }
     // eslint-disable-next-line
   }, []);
@@ -57,14 +60,14 @@ export default function BlogEdit() {
   }, [blogEditorTitle, messageApi]);
 
   const getExistBlog = async (id) => {
-    setTitleLoading(true);
-    setContentLoading(true);
-
-    await getBlogTitle(id);
-    setTitleLoading(false);
+    setTitleLoading(1);
+    setContentLoading(1);
 
     await getBlogContent(id);
-    setContentLoading(false);
+    await getBlogTitle(id);
+
+    setTitleLoading(0);
+    setContentLoading(0);
   };
 
   const getBlogTitle = async (id) => {

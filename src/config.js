@@ -41,5 +41,11 @@ export const rpcUrl = () => {
 export const contractAddress = config[selection].web3BlogAddress;
 export const arweaveGateway = config[selection].arweaveGateway;
 
+export const PAGINATION_SYMBOL = "p=";
+
 export const MAX_TITLE_LENGTH = 100;
 export const PAGE_SIZE = 10;
+export const DONATION_BITCOIN_ADDRESS =
+  process.env.REACT_APP_DONATION_BITCOIN_ADDRESS || "";
+export const DONATION_ETHEREUM_ADDRESS =
+  process.env.REACT_APP_DONATION_ETHEREUM_ADDRESS || "";

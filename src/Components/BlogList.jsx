@@ -4,11 +4,11 @@ import {
   getDetailByTokenId,
   getWeb3BlogTokenId,
 } from "../service/web3BlogService";
-import { PAGE_SIZE } from "../config";
+import { PAGE_SIZE, PAGINATION_SYMBOL } from "../config";
 
 export default function BlogList() {
-  const baseUrl = window.location.search.split("=")[0] + "=";
-  const currentPage = 1 || Number(window.location.search.split("=")[1]);
+  const currentPage =
+    Number(window.location.search.split(PAGINATION_SYMBOL)[1]) || 1;
   const [messageApi, contextHolder] = message.useMessage();
 
   const homepageUrl = useRef("");
@@ -17,7 +17,9 @@ export default function BlogList() {
   const [tokenId, setTokenId] = useState(0);
 
   const handlePageChange = (page) => {
-    window.location.href = baseUrl + page;
+    let pathName = window.location.pathname;
+    if (!window.location.pathname.endsWith("/")) pathName += "/";
+    window.location.href = pathName + "?" + PAGINATION_SYMBOL + page;
   };
 
   const fetchBlogs = async () => {

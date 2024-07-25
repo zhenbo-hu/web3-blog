@@ -36,7 +36,6 @@ export default function BlogItem() {
     }
 
     const url = arweaveGateway + data;
-    console.log(url);
     axios
       .get(url)
       .then((data) => {
