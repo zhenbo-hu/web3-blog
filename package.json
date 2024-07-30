@@ -15,7 +15,6 @@
     "arweave": "^1.15.1",
     "axios": "^1.7.2",
     "eslint-config-react-app": "^7.0.1",
-    "ethers": "^6.13.1",
     "hardhat": "^2.22.5",
     "hox": "^2.1.1",
     "react": "^18.3.1",
@@ -58,8 +57,11 @@
     ]
   },
   "devDependencies": {
-    "arweave-deploy": "^1.9.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+    "@nomicfoundation/hardhat-ethers": "^3.0.6",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "arweave-deploy": "^1.9.1",
+    "ethers": "^6.13.2",
+    "solidity-coverage": "^0.8.12"
   }
 }
